@@ -22,12 +22,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://akramns.com"),
   title: "Akram Nsengiyumva",
   description: "Take a simple idea and take it very seriously.",
   openGraph: {
     title: "Akram Nsengiyumva",
     description: "Take a simple idea and take it very seriously.",
     type: "website",
+    url: "https://akramns.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Akram Nsengiyumva",
+    description: "Take a simple idea and take it very seriously.",
   },
 };
 
