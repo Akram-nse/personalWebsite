@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { timelineSections } from "@/content/site";
+import { setActiveTimelineSection } from "@/lib/timelineActive";
 
 const SPREAD = 14;
 
@@ -38,7 +39,7 @@ export default function TimelineRail() {
       const bandTop = vh * 0.35;
       const bandBottom = vh * 0.65;
       let bestId: string | null = null;
-      let bestOverlap = -1;
+      let bestOverlap = 0;
 
       for (const section of timelineSections) {
         const el = document.getElementById(section.id);
@@ -57,7 +58,11 @@ export default function TimelineRail() {
         }
       }
 
-      if (bestId) setActiveId(bestId);
+      // Only update when a section actually overlaps the band. Above the
+      // first timeline section (e.g. on the hero), nothing overlaps and we
+      // want `activeId` to stay null so the mobile chapter picker shows
+      // "Contents" instead of defaulting to "2005".
+      setActiveId(bestId);
     };
 
     pickActiveSectionRef.current = pickActiveSection;
@@ -80,6 +85,13 @@ export default function TimelineRail() {
       pickActiveSectionRef.current = () => {};
     };
   }, []);
+
+  useEffect(() => {
+    setActiveTimelineSection(activeId);
+    return () => {
+      setActiveTimelineSection(null);
+    };
+  }, [activeId]);
 
   return (
     <AnimatePresence>
@@ -127,20 +139,24 @@ export default function TimelineRail() {
                 >
                   <motion.span
                     animate={{
-                      width: isActive ? 20 : 8,
+                      width: isActive ? 24 : 10,
                       backgroundColor: isActive
                         ? "var(--foreground)"
-                        : "rgba(26, 26, 26, 0.15)",
+                        : "rgba(26, 26, 26, 0.18)",
                     }}
                     transition={{ duration: 0.3 }}
-                    className="block h-[1px] rounded-full"
+                    className="block h-[1.5px] rounded-full"
                   />
                   <span
-                    className={`whitespace-nowrap text-[11px] font-medium tracking-wide transition-all duration-200 ${
+                    className={`whitespace-nowrap text-[14px] italic tracking-[0.01em] transition-all duration-200 ${
                       isActive
-                        ? "text-foreground/85"
-                        : "text-foreground/40"
+                        ? "text-foreground"
+                        : "text-foreground/45"
                     }`}
+                    style={{
+                      fontFamily: "var(--font-playfair), Georgia, serif",
+                      fontWeight: 500,
+                    }}
                   >
                     {section.title}
                   </span>

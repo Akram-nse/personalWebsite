@@ -44,7 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-background font-medium text-foreground">
         <SiteHeader />
-        {children}
+        <div id="page-content">{children}</div>
         <PersistentContactButton />
       </body>
     </html>

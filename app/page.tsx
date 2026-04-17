@@ -1,3 +1,4 @@
+import HomeHashScroll from "@/components/HomeHashScroll";
 import QuoteHero from "@/components/QuoteHero";
 import TimelineIntro from "@/components/TimelineIntro";
 import TimelineRail from "@/components/TimelineRail";
@@ -11,6 +12,7 @@ import {
 export default function Home() {
   return (
     <>
+      <HomeHashScroll />
       <QuoteHero
         name={hero.name}
         tagline={hero.tagline}

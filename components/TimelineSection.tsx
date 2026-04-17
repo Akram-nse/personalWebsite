@@ -3,50 +3,12 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ImageSlideshow from "./ImageSlideshow";
+import ConnectLinks from "./ConnectLinks";
+import RichText from "./RichText";
 import type { TimelineEntry } from "@/content/site";
-import { contactInfo } from "@/content/site";
 
 interface TimelineSectionProps {
   entry: TimelineEntry;
-}
-
-function ConnectLinks() {
-  const buttonClass =
-    "inline-flex h-11 items-center justify-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.03] px-5 text-[13px] font-medium text-foreground/80 transition-colors hover:border-foreground/25 hover:bg-foreground/[0.06] hover:text-foreground";
-
-  return (
-    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <a
-        href={contactInfo.x}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="X (Twitter) profile"
-        className={`${buttonClass} min-w-11 px-0`}
-      >
-        <svg
-          viewBox="0 0 1200 1227"
-          aria-hidden="true"
-          className="h-4 w-4 fill-current"
-        >
-          <path d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894L144.011 79.694h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z" />
-        </svg>
-      </a>
-      <a
-        href={contactInfo.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={buttonClass}
-      >
-        LinkedIn
-      </a>
-      <a
-        href={`mailto:${contactInfo.email}`}
-        className={buttonClass}
-      >
-        Email
-      </a>
-    </div>
-  );
 }
 
 export default function TimelineSection({ entry }: TimelineSectionProps) {
@@ -61,13 +23,13 @@ export default function TimelineSection({ entry }: TimelineSectionProps) {
       className={`flex flex-col justify-center ${isConnect ? "items-center text-center" : ""}`}
     >
       <h3
-        className="text-3xl tracking-tight text-foreground md:text-[2.25rem]"
+        className="text-[1.875rem] tracking-tight text-foreground md:text-4xl lg:text-[2.625rem]"
         style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontWeight: 500 }}
       >
         {entry.title}
       </h3>
-      <p className="mt-5 max-w-prose text-[15px] font-medium leading-[1.75] text-foreground/65 md:text-base">
-        {entry.body}
+      <p className="mt-6 max-w-[52ch] text-base font-medium leading-[1.8] text-foreground/65 md:text-lg">
+        <RichText text={entry.body} links={entry.bodyLinks} />
       </p>
       {isConnect ? <ConnectLinks /> : null}
     </div>
@@ -86,7 +48,7 @@ export default function TimelineSection({ entry }: TimelineSectionProps) {
         initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
-        className="mx-auto min-h-[55vh] max-w-3xl scroll-mt-24 px-6 py-20 md:py-28"
+        className="mx-auto flex min-h-screen max-w-4xl scroll-mt-24 flex-col justify-center px-6 py-20 md:min-h-[55vh] md:py-28"
       >
         {textBlock}
       </motion.div>
@@ -100,7 +62,7 @@ export default function TimelineSection({ entry }: TimelineSectionProps) {
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="mx-auto grid min-h-[55vh] max-w-5xl scroll-mt-24 items-center gap-8 px-6 py-20 md:grid-cols-2 md:gap-16 md:py-28"
+      className="mx-auto grid min-h-[55vh] max-w-6xl scroll-mt-24 items-center gap-10 px-6 py-20 md:grid-cols-2 md:gap-20 md:py-28 lg:max-w-7xl lg:gap-24"
     >
       {imageOnLeft ? (
         <>
