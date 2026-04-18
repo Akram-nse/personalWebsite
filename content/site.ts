@@ -146,7 +146,7 @@ export const timelineSections: TimelineEntry[] = [
   {
     id: "first-business",
     title: "First Business",
-    body: "Botswana was slow to adapt to new technologies/platforms. I noticed this gap and began a marketing agency at 16 that commissioned websites and ran digital ads. At 17, I signed Ethiopian Airlines Botswana as a client, and an achievement I\u2019m deeply proud of, but I knew there was something more.",
+    body: "Botswana was slow to adapt to new technologies/platforms. I noticed this gap and began a marketing agency at 16 that commissioned websites and ran digital ads. At 17, I signed Ethiopian Airlines Botswana as a client, an achievement I\u2019m deeply proud of, but I knew there was something more.",
     bodyLinks: [{ text: "marketing agency", href: "/portfolio#yv-social" }],
     images: [
       {
@@ -203,7 +203,7 @@ export const timelineSections: TimelineEntry[] = [
   {
     id: "frustration",
     title: "Frustration",
-    body: "Once in the US, I started networking and building. I won a hackathon my freshman year, built websites for clubs at the school, but I still felt constrained by classes. I can't drop out without being kicked out, so I began building a project that could warrant an O-1 visa. I stayed on campus for Fall, spring, summer, and winter breaks, but the startup eventually fell flat after co-founder issues.",
+    body: "Once in the US, I started networking and building. I won a hackathon my freshman year and built websites for clubs at the school, but I still felt constrained by classes. I can't drop out without being kicked out, so I began building a project that could warrant an O-1 visa. I stayed on campus for Fall, spring, summer, and winter breaks, but the startup eventually fell flat after co-founder issues.",
     bodyLinks: [
       { text: "won a hackathon", href: "/portfolio#common-helper" },
     ],
