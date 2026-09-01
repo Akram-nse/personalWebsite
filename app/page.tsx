@@ -1,4 +1,4 @@
-import { portfolioPage } from "@/content/site";
+import { portfolioPage, siteConfig } from "@/content/site";
 
 export default function Home() {
   return (
@@ -9,10 +9,20 @@ export default function Home() {
           style={{
             fontFamily: "var(--font-playfair), Georgia, serif",
             fontWeight: 500,
+            letterSpacing: "-0.015em",
+          }}
+        >
+          {siteConfig.name}
+        </h1>
+        <p
+          className="mt-3 text-2xl italic tracking-tight text-foreground/50 md:text-3xl"
+          style={{
+            fontFamily: "var(--font-playfair), Georgia, serif",
+            fontWeight: 400,
           }}
         >
           {portfolioPage.title}
-        </h1>
+        </p>
         <p className="mt-4 max-w-xl text-[15px] font-medium leading-[1.8] text-foreground/55">
           {portfolioPage.subtitle}
         </p>
