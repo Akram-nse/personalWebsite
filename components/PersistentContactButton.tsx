@@ -3,6 +3,8 @@
 import { usePathname, useRouter } from "next/navigation";
 
 const CONNECT_ID = "connect";
+/** The Connect section lives at the end of the timeline page. */
+const TIMELINE_ROUTE = "/timeline";
 
 export default function PersistentContactButton() {
   const pathname = usePathname();
@@ -13,7 +15,7 @@ export default function PersistentContactButton() {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (pathname === "/") {
+    if (pathname === TIMELINE_ROUTE) {
       document.getElementById(CONNECT_ID)?.scrollIntoView({
         behavior: reduced ? "auto" : "smooth",
         block: "start",
@@ -22,7 +24,7 @@ export default function PersistentContactButton() {
       return;
     }
 
-    router.push(`/#${CONNECT_ID}`, { scroll: false });
+    router.push(`${TIMELINE_ROUTE}#${CONNECT_ID}`, { scroll: false });
   };
 
   return (

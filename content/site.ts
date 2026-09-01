@@ -147,7 +147,7 @@ export const timelineSections: TimelineEntry[] = [
     id: "first-business",
     title: "First Business",
     body: "Botswana was slow to adapt to new technologies/platforms. I noticed this gap and began a marketing agency at 16 that commissioned websites and ran digital ads. At 17, I signed Ethiopian Airlines Botswana as a client, an achievement I\u2019m deeply proud of, but I knew there was something more.",
-    bodyLinks: [{ text: "marketing agency", href: "/portfolio#yv-social" }],
+    bodyLinks: [{ text: "marketing agency", href: "/#yv-social" }],
     images: [
       {
         src: "/timeline/first-business-ad-rates.png",
@@ -174,13 +174,13 @@ export const timelineSections: TimelineEntry[] = [
     id: "the-us",
     title: "The U.S.",
     body: "My geography limited me, and the only way to get into the U.S. at my age was through college. I prepared my application and built a mobile app to prove my competence in CS. I was rejected by all the IVYs for not completing my last year, but was accepted to UMiami, and one acceptance was all I needed.",
-    bodyLinks: [{ text: "mobile app", href: "/portfolio#athens" }],
+    bodyLinks: [{ text: "mobile app", href: "/#athens" }],
     images: [
       {
         src: "/timeline/the-us-athens-build.png",
         caption: "Building a duolingo style philosophy learning app",
         captionLinks: [
-          { text: "philosophy learning app", href: "/portfolio#athens" },
+          { text: "philosophy learning app", href: "/#athens" },
         ],
         objectClassName: "object-contain",
         frameClassName: "bg-background",
@@ -205,14 +205,14 @@ export const timelineSections: TimelineEntry[] = [
     title: "Frustration",
     body: "Once in the US, I started networking and building. I won a hackathon my freshman year and built websites for clubs at the school, but I still felt constrained by classes. I can't drop out without being kicked out, so I began building a project that could warrant an O-1 visa. I stayed on campus for Fall, spring, summer, and winter breaks, but the startup eventually fell flat after co-founder issues.",
     bodyLinks: [
-      { text: "won a hackathon", href: "/portfolio#common-helper" },
+      { text: "won a hackathon", href: "/#common-helper" },
     ],
     images: [
       {
         src: "/timeline/frustration-snaplock-mac-appstore.png",
         caption: "The productivity app I launched in 2025 (side project)",
         captionLinks: [
-          { text: "productivity app", href: "/portfolio#snaplock" },
+          { text: "productivity app", href: "/#snaplock" },
         ],
         alt: "SnapLock app listing on the Mac App Store",
         objectClassName: "object-contain",
@@ -221,7 +221,7 @@ export const timelineSections: TimelineEntry[] = [
       {
         src: "/timeline/frustration-hack-timelapse.mp4",
         caption: "Working through the night at a Hackathon",
-        captionLinks: [{ text: "Hackathon", href: "/portfolio#common-helper" }],
+        captionLinks: [{ text: "Hackathon", href: "/#common-helper" }],
         alt: "Timelapse of me working through the night at a hackathon",
         objectClassName: "object-contain",
         frameClassName: "bg-background",
@@ -235,7 +235,7 @@ export const timelineSections: TimelineEntry[] = [
     title: "Now",
     body: "Technology has done so much for me, and yet it is still so feared among the general public. My goal is to build a startup that meets people where they are and diffuses the latest in tech to the rest of the population. In the same spirit that Apple made computers approachable, I want to make things like Openclaw/agent harnesses accessible to non-technical users. I'm starting with agents for family homes, and I'm willing to go house by house to make this real.",
     bodyLinks: [
-      { text: "agents for family homes", href: "/portfolio#vector" },
+      { text: "agents for family homes", href: "/#vector" },
     ],
     images: [
       {
@@ -277,99 +277,21 @@ I started a marketing agency at 16 and signed Ethiopian Airlines as a client the
 
 I'm drawn to useful technology — especially when it hasn't yet reached the people who'd benefit most, the way Apple once made computers approachable. I'm starting with AI agents for family homes, and I'm willing to go house by house to make this real.`,
   bodyLinks: [
-    { text: "marketing agency", href: "/portfolio#yv-social" },
-    { text: "philosophy learning app", href: "/portfolio#athens" },
-    { text: "productivity app", href: "/portfolio#snaplock" },
-    { text: "AI agents for family homes", href: "/portfolio#vector" },
+    { text: "marketing agency", href: "/#yv-social" },
+    { text: "philosophy learning app", href: "/#athens" },
+    { text: "productivity app", href: "/#snaplock" },
+    { text: "AI agents for family homes", href: "/#vector" },
   ] as TextLink[],
 };
 
-export interface InspoEntry {
-  name: string;
-  note: string;
-  /** Square-ish image shown to the left of the entry. Lives under /public. */
-  image: string;
-  /** Optional alt text. Falls back to the entry name. */
-  alt?: string;
-  /** Small pill-style tags shown under the note (e.g. "Podcast", "Philosophy"). */
-  tags?: string[];
-}
-
-export const inspoPage = {
-  title: "Inspo",
-  people: {
-    subtitle:
-      "I hope for my life to be a love letter to those who have impacted it most. Aside from family and friends, below are the most impactful of those people.",
-    entries: [
-      {
-        name: "Napoleon",
-        note: "A reminder that action — swift, decisive, and at scale — is the only thing that moves the world.",
-        image: "/inspo/napoleon.png",
-        alt: "Napoleon Crossing the Alps by Jacques-Louis David",
-      },
-      {
-        name: "Steve Jobs",
-        note: "The intersection of technology and liberal arts. Products as expressions of taste.",
-        image: "/inspo/steve-jobs.png",
-        alt: "Portrait of Steve Jobs",
-      },
-      {
-        name: "Michael Jordan",
-        note: "The champion's mentality — the obsessive will to win, and to hold everyone around you to that same standard.",
-        image: "/inspo/michael-jordan.png",
-        alt: "Michael Jordan in a Chicago Bulls jersey",
-      },
-      {
-        name: "Chris Bumstead",
-        note: "Proof that there can be real depth and craft in a pursuit most would dismiss as vain.",
-        image: "/inspo/chris-bumstead.png",
-        alt: "Chris Bumstead holding the Mr. Olympia medal",
-      },
-    ] as InspoEntry[],
-  },
-  media: {
-    subtitle: "Podcasts and books have shaped me just as much.",
-    entries: [
-      {
-        name: "Founders Podcast",
-        note: "My introduction to the biographies of the greats I now aspire to emulate.",
-        image: "/inspo/founders-podcast.png",
-        alt: "Founders podcast logo",
-        tags: ["Podcast", "Biographies"],
-      },
-      {
-        name: "Philosophize This!",
-        note: "Expanded my worldview and was my first real introduction to philosophy.",
-        image: "/inspo/philosophize-this.png",
-        alt: "Philosophize This! podcast artwork",
-        tags: ["Podcast", "Philosophy"],
-      },
-      {
-        name: "Red Rising",
-        note: "My favorite science fiction novel — it keeps me building toward a future that feels pulled out of sci-fi.",
-        image: "/inspo/red-rising.png",
-        alt: "Red Rising book cover",
-        tags: ["Book", "Science Fiction"],
-      },
-      {
-        name: "Paul Graham's Essays",
-        note: "The gold standard for startup writing. Essays as a form of thinking.",
-        image: "/inspo/paul-graham-essays.png",
-        alt: "Hackers & Painters by Paul Graham",
-        tags: ["Essays", "Startups"],
-      },
-    ] as InspoEntry[],
-  },
-};
-
 export const navLinks = [
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Portfolio", href: "/" },
+  { label: "Timeline", href: "/timeline" },
   { label: "About", href: "/about" },
-  { label: "Inspo", href: "/inspo" },
 ];
 
 export interface PortfolioProject {
-  /** Anchor slug — used by inline links across the site (e.g. /portfolio#snaplock). */
+  /** Anchor slug — used by inline links across the site (e.g. /#snaplock). */
   id: string;
   name: string;
   type: string;

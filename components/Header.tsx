@@ -82,14 +82,6 @@ function HeaderMenu({ animated = false }: { animated?: boolean }) {
             className="absolute right-0 top-full mt-3 min-w-[140px] origin-top-right rounded-lg border border-border/70 bg-background/95 p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] backdrop-blur-md"
           >
             <div className="flex flex-col gap-3">
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className={dropdownLinkClass}
-                style={linkStyle}
-              >
-                Home
-              </Link>
               {navLinks.map((link) => (
                 <Link
                   key={link.href}

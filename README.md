@@ -16,9 +16,9 @@ Open [http://localhost:3000](http://localhost:3000).
 ```
 app/
   layout.tsx          Root layout with persistent contact button
-  page.tsx            Home: landing hero + scrollable timeline
+  page.tsx            Home: portfolio (selected work)
+  timeline/page.tsx   Landing hero + scrollable timeline
   about/page.tsx      Brief about page
-  inspo/page.tsx      Influences page
   globals.css         Theme tokens and base styles
 
 components/
@@ -50,8 +50,8 @@ All timeline sections live in `content/site.ts` as the `timelineSections` array.
 ### Contact links
 Update `contactInfo` in `content/site.ts`.
 
-### About and Inspo pages
-Update `aboutPage` and `inspoPage` objects in `content/site.ts`.
+### Portfolio and About pages
+Update `portfolioPage` and `aboutPage` objects in `content/site.ts`.
 
 ## Deploy
 

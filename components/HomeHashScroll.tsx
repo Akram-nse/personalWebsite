@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-/** Scrolls to `#connect` when the home page loads with that hash (e.g. after Contact from another route). */
+/** Scrolls to `#connect` when the timeline page loads with that hash (e.g. after Contact from another route). */
 export default function HomeHashScroll() {
   useEffect(() => {
     const id = window.location.hash.slice(1);

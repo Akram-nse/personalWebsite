@@ -22,8 +22,9 @@ This document is the **ground rules** for anyone (human or agent) editing this r
 app/
   layout.tsx              Root layout + header + persistent contact button
   template.tsx            Framer Motion page enter transitions
-  page.tsx                Home (hero + timeline)
-  about/ inspo/ portfolio/page.tsx
+  page.tsx                Home (portfolio)
+  timeline/page.tsx       Hero + timeline
+  about/page.tsx
   globals.css             Theme tokens
 components/
   SiteHeader.tsx          Header, collapses/shows home-icon by route
@@ -55,7 +56,7 @@ Exported objects and the rules around them:
 - `timelineIntro` — split into `bodyBefore / bodyMiddle / bodyAfter` because the intro has inline links (Portfolio, About) rendered between the slots.
 - `timelineSections: TimelineEntry[]` — ordered list; order here is the render order. The **left rail** reads from this same array, so every entry gets a rail dot automatically.
 - `contactInfo` — `email`, `linkedin`, `github`, `x`. Used by the Connect section and the fixed Contact button. If you add another channel, add it here first and consume it in components.
-- `aboutPage`, `inspoPage`, `portfolioPage` — copy for the secondary pages.
+- `portfolioPage` — copy for the home page. `aboutPage` — copy for `/about`.
 - `navLinks` — top-nav entries.
 
 ### `TimelineEntry`
@@ -193,9 +194,10 @@ Use Tailwind `bg-background` / `text-foreground` / `border-border` so these stay
 
 ## 7. Navigation & routes
 
-- `/` Home — hero + timeline.
-- `/about`, `/inspo`, `/portfolio` — secondary pages sharing the layout.
-- The **Contact button** routes to `#connect` on `/`. From secondary pages it `router.push('/#connect')` and `HomeHashScroll` scrolls to the Connect section after mount.
+- `/` Home — the portfolio (selected work). Project anchors are `/#<project-id>`.
+- `/timeline` — hero + timeline. `/about` — secondary page sharing the layout.
+- `/portfolio` and `/inspo` permanently redirect to `/` (see `next.config.ts`) so previously shared links keep working.
+- The **Contact button** routes to `#connect` on `/timeline`. From other pages it `router.push('/timeline#connect')` and `HomeHashScroll` scrolls to the Connect section after mount.
 - The **left rail** auto-updates based on which `timelineSections` entry overlaps the viewport band. Don't manually wire additional rail items.
 
 ---

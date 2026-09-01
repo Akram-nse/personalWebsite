@@ -41,7 +41,7 @@ export default function TimelineIntro({
       </h2>
       <p className="mt-8 text-base font-medium leading-[1.8] text-foreground/65 md:text-lg">
         {bodyBefore}
-        <Link href="/portfolio" className={inlineLinkClass}>
+        <Link href="/" className={inlineLinkClass}>
           Portfolio
         </Link>
         {bodyMiddle}

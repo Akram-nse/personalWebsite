@@ -14,6 +14,9 @@ const SERIF_STYLE = {
 
 const ACCENT = "#2F5DA0";
 
+/** Route hosting the timeline chapters this picker navigates. */
+const TIMELINE_ROUTE = "/timeline";
+
 /**
  * Snapshots the document-space top of every timeline section *before* the
  * zoom-out transform is applied. Using these cached values sidesteps the
@@ -178,18 +181,21 @@ export default function MobileChapterPicker() {
     });
   };
 
-  const jumpToHome = () => {
-    if (pathname !== "/") {
-      router.push("/");
+  const activeSection = timelineSections.find((s) => s.id === activeId);
+  const onTimeline = pathname === TIMELINE_ROUTE;
+
+  const jumpToTop = () => {
+    if (!onTimeline) {
+      router.push(TIMELINE_ROUTE);
       setOpen(false);
       return;
     }
-    scrollToTarget(0, "/");
+    scrollToTarget(0, TIMELINE_ROUTE);
   };
 
   const jumpTo = (id: string) => {
-    if (pathname !== "/") {
-      router.push(`/#${id}`, { scroll: false });
+    if (!onTimeline) {
+      router.push(`${TIMELINE_ROUTE}#${id}`, { scroll: false });
       setOpen(false);
       return;
     }
@@ -198,11 +204,8 @@ export default function MobileChapterPicker() {
     scrollToTarget(targetTop, `#${id}`);
   };
 
-  const activeSection = timelineSections.find((s) => s.id === activeId);
-  const isHome = pathname === "/";
-
-  const shouldShowTrigger = isHome ? Boolean(activeSection) : true;
-  const buttonLabel = isHome ? activeSection?.title ?? "" : "Home";
+  const shouldShowTrigger = onTimeline ? Boolean(activeSection) : true;
+  const buttonLabel = onTimeline ? activeSection?.title ?? "" : "Timeline";
 
   const listIcon = (
     <svg
@@ -235,8 +238,8 @@ export default function MobileChapterPicker() {
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
             onClick={() => {
-              if (!isHome) {
-                router.push("/");
+              if (!onTimeline) {
+                router.push(TIMELINE_ROUTE);
                 return;
               }
               if (open) {
@@ -245,8 +248,8 @@ export default function MobileChapterPicker() {
                 openMenu();
               }
             }}
-            aria-haspopup={isHome ? "dialog" : undefined}
-            aria-expanded={isHome ? open : undefined}
+            aria-haspopup={onTimeline ? "dialog" : undefined}
+            aria-expanded={onTimeline ? open : undefined}
             className="flex min-w-0 max-w-full items-center gap-1.5 px-2 py-1.5"
             style={{ color: ACCENT }}
           >
@@ -296,24 +299,24 @@ export default function MobileChapterPicker() {
               style={{ WebkitOverflowScrolling: "touch" }}
             >
               {(() => {
-                const homeActive = isHome && activeId === null;
+                const topActive = onTimeline && activeId === null;
                 return (
-                  <li key="home">
+                  <li key="top">
                     <button
                       type="button"
-                      data-active={homeActive ? "true" : undefined}
-                      onClick={jumpToHome}
+                      data-active={topActive ? "true" : undefined}
+                      onClick={jumpToTop}
                       className={`block w-full py-3 text-right italic tracking-[-0.005em] leading-tight transition-colors ${
-                        homeActive
+                        topActive
                           ? "text-[22px]"
                           : "text-foreground/35 text-[19px] hover:text-foreground/70"
                       }`}
                       style={{
                         ...SERIF_STYLE,
-                        color: homeActive ? ACCENT : undefined,
+                        color: topActive ? ACCENT : undefined,
                       }}
                     >
-                      Home
+                      Top
                     </button>
                   </li>
                 );
